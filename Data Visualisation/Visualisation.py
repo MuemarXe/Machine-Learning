@@ -9,7 +9,7 @@ from matplotlib import pyplot as plt
 #Given that the input variables are numeric, we can create box and whisker plots of each.
 
 # box and whisker plots
-dataset.plot(kind ='box',subplots=True, layout=(2,2), sharex=False, sharey=False)
+dataset.plt(kind ='box',subplots=True, layout=(2,2), sharex=False, sharey=False)
 plt.show()
 
 
