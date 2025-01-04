@@ -33,3 +33,6 @@ print(dataset.describe())
 
 #class distribution
 print(dataset.groupby('class').size())
+
+x = "evans"
+type(x)
