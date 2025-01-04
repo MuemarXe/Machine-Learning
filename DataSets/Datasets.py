@@ -14,4 +14,22 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
-...
+#print('Libraries loaded')
+# Load dataset
+url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
+names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+dataset = read_csv(url, names=names)
+#print('Dataset loaded')
+#dataset shape 
+print(dataset.shape)
+# datsset head
+print(dataset.head(30))
+# Now we look at the datasets descriptions
+#this is a summary of each attribute
+# the mean, the min and max values as well as some percentiles
+print(dataset.describe())
+
+#Let’s now take a look at the number of instances (rows) that belong to each class. We can view this as an absolute count.
+
+#class distribution
+print(dataset.groupby('class').size())
