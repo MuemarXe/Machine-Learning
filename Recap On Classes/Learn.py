@@ -60,7 +60,15 @@ class Battery():
         self.battery_size = battery_size
     def describe_battery(self):
         print("This car has a "+ str(self.battery_size) + "-kWh battery")
+    def get_range(self):
+        if self.battery_size == 70:
+            range =240
+        elif self.battery_size ==85:
+            range =280
+        message="The range is the car is  " + str(range)
+        print(message)
 
 my_tesla =ElectricCar('Tesla','CyberTruck',2022,1000)
 print(my_tesla.get_descriptive_name())
 my_tesla.battery.describe_battery()
+my_tesla.battery.get_range()
