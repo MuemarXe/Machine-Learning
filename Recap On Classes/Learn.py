@@ -30,3 +30,7 @@ my_new_car = Car('Audi','A5', 2024,450)
 my_new_car2 = Car('BMW','M5',2024,700)
 print(my_new_car.get_descriptive_name())
 print(my_new_car2.get_descriptive_name())
+
+my_tesla =ElectricCar('Tesla','CyberTruck',2022,1000)
+print(my_tesla.get_descriptive_name())
+my_tesla.describe_battery()
