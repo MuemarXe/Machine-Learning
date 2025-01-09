@@ -1,12 +1,13 @@
-from Learn import Car # using as to give a module an alias
-
-#L.making_pizza(16,'peperoni')
-#L.making_pizza(12,'mushrooms','green peppers','extra cheese')# arguments passed from the function making_pizza in Learn.py
-
-# module_name.function_name(arguments)
-#import module_name
-
-#importing specific functions
-# from module_name import function_name
-my_new_car = Car('Audi','A5', 2024,450)
-print(my_new_car.get_descriptive_name())
+import tensorflow 
+import keras
+import numpy as np
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Dense
+l0 = Dense(units=1, input_shape=[1])
+model = Sequential([l0])
+model.compile(optimizer='sgd', loss='mean_squared_error')
+xs = np.array([-1.0, 0.0, 1.0, 2.0, 3.0, 4.0], dtype=float)
+ys = np.array([-3.0, -1.0, 1.0, 3.0, 5.0, 7.0], dtype=float)
+model.fit(xs, ys, epochs=500)
+print(model.predict([10.0]))
+print("Here is what I learned: {}".format(l0.get_weights()))

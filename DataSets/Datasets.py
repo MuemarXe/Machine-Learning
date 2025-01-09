@@ -36,3 +36,7 @@ print(dataset.groupby('class').size())
 
 x = "evans"
 type(x)
+array =dataset.vales
+X = array[:,0:4]
+Y = array[:4]
+X_train,X_validation,Y_train,Y_validation = train_test_split(X,Y,test_size=0.20,random_state=1)
