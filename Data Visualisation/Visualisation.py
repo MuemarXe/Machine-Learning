@@ -1,5 +1,4 @@
-import sys
-from DataSets import Datasets
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -34,9 +33,40 @@ scatter_matrix(dataset)
 plt.show()
 
 #Validation Dataset
-array =dataset.vales
+array =dataset.values
 X = array[:,0:4]
-Y = array[:4]
+Y = array[:,4]
 X_train,X_validation,Y_train,Y_validation = train_test_split(X,Y,test_size=0.20,random_state=1)
 
+# Building Models 
+#Spot Check alorithims 
+models =[]
+models.append(('LR',LogisticRegression(solver='liblinear',multi_class='ovr')))
+models.append(('LDA',LinearDiscriminantAnalysis()))
+models.append(('KNN',KNeighborsClassifier()))
+models.append(('CART',DecisionTreeClassifier()))
+models.append(('NB',GaussianNB()))
+models.append(('SVM',SVC(gamma='auto')))
+#Evaluate each model
+results =[]
+names=[]
 
+for name,model in models:
+    kfold= StratifiedKFold(n_splits=10,random_state=1,shuffle=True)
+    cv_results=cross_val_score(model,X_train,Y_train,cv=kfold,scoring='accuracy')
+    results.append(cv_results)
+    names.append(name)
+    print('%s:%f:(%f)'%(name,cv_results.mean(),cv_results.std()))
+#compare algirithims
+plt.boxplot(results,labels=names)
+plt.title('Algorithim Comparison')
+plt.show()
+
+#Make Predictions
+model = SVC(gamma='auto')
+model.fit(X_train,Y_train)
+predictions=model.predict(X_validation)
+#Evaluate Predictions
+print(accuracy_score(Y_validation,predictions))
+print(confusion_matrix(Y_validation,predictions))
+print(classification_report(Y_validation,predictions))
